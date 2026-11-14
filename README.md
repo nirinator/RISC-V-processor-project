@@ -8,8 +8,7 @@ The current stage encompasses the complete RTL hardware design, which has been s
 ## Architecture & Specifications
 *   **ISA:** RISC-V 32-bit (RV32I subset).
 *   **Execution Model:** Single-Cycle.
-*   **Memory Architecture:** Harvard Architecture (physically separated Instruction Memory and Data Memory).
-*   **Modularity:** Modular design integrating an ALU, Register File, Immediate Generator, and Control Unit into a unified top core (`riscv_core`).
+*   **Modularity:** Modular design integrating an ALU, Register File, Immediate Generator, and Control Unit into a unified top core.
 
 ## Supported Instruction Set
 To keep the design focused on core functionality, I implemented a subset of the RV32I base instructions:
