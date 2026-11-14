@@ -31,7 +31,6 @@ To keep the logic streamlined and focused on core functionality, the processor s
 *   **Datapath vs. Control Separation:** All 32-bit arithmetic (including branch target calculation `pc + imm`) is strictly hardwired in the Datapath. The Control Unit is solely responsible for asserting control flags (e.g., `branch`, `mem_write`).
 *   **Word-Aligned Memory Access:** While the RISC-V ISA is byte-addressed (PC increments by 4), our memory arrays are word-indexed. This is elegantly resolved in hardware by truncating the two least significant bits of the address (`addr[31:2]`), acting as a hardware-level division by 4.
 *   **Hardwired STORE Logic:** Following the RISC-V standard, the data to be stored in RAM always originates from `rs2`. Therefore, the `rd2` output from the Register File is hardwired directly to the `write_data` input of the Data Memory, relying on the `mem_write` flag to gate the operation.
-*   **Optimized Result Multiplexer:** By removing `JAL`/`JALR` support, the `result_src` multiplexer was optimized from a 3-way to a faster 2-way selector (choosing only between ALU output and Data Memory read).
 
 ## 🚀 Current Status & Next Steps
 *   [x] Datapath implementation
