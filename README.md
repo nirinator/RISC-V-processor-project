@@ -15,7 +15,7 @@ To keep the design focused on core functionality, I implemented a subset of the 
 *   **R-Type:** `ADD`, `SUB`, `SLL`, `SLT`, `SLTU`, `XOR`, `SRL`, `SRA`, `OR`, `AND`
 *   **I-Type:** Immediate arithmetic operations (`ADDI`, etc.)
 *   **Load/Store:** `LW`, `SW`
-*   **Branch:** `BEQ`, `BNE` 
+*   **Branch:** `BEQ` 
 
 ## Hardware Modules Breakdown
 Here is a quick look at the main modules I wrote:
