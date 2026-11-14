@@ -17,8 +17,6 @@ To keep the logic streamlined and focused on core functionality, the processor s
 *   **I-Type:** Immediate arithmetic operations (`ADDI`, etc.)
 *   **Load/Store:** `LW`, `SW`
 *   **Branch:** `BEQ`, `BNE` (and other conditional branches)
-*   **U-Type:** `LUI`, `AUIPC`
-*   *(Note: `JAL` and `JALR` instructions were intentionally omitted in this version to optimize the Datapath multiplexing logic).*
 
 ## 🧩 Hardware Modules Breakdown
 1.  **`riscv_core` (Top Module):** The main Datapath orchestrating the flow of data between all internal modules.
