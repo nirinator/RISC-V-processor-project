@@ -1,4 +1,4 @@
-# Custom RISC-V 32-bit Single-Cycle Processor
+# RISC-V 32-bit Processor - Part A
 
 ## 📌 Project Overview
 This project is an educational implementation of a custom **RISC-V 32-bit processor** written in **SystemVerilog**. The core is designed from scratch, focusing on a clear understanding of hardware architecture, specifically the strict separation between the **Datapath** and the **Control Unit**. 
