@@ -27,7 +27,14 @@ Here is a quick look at the main modules I wrote:
 6.  **`instr_mem` (ROM):** Read-only memory storing the executable program.
 7.  **`data_mem` (RAM):** Read/Write memory for variables and program data.
 
+## Verification Methodology (The "Golden Model")
+To prove the hardware works flawlessly, I built an automated verification environment mimicking industry practices:
+*   **C++ Golden Model:** I wrote a C++ simulator that reads the exact same machine code (`program.hex`) as the hardware. It executes the instructions in software and dumps the final state of the 32 registers into `expected_regs.hex`.
+*   **SystemVerilog Testbench:** The Vivado testbench runs the hardware simulation, reads the `expected_regs.hex` file, and automatically compares the hardware's final register states against the C++ model's predictions.
+*   **Tcl Automation:** I integrated a `run_model.tcl` script into Vivado's `xsim.compile.tcl.pre` hook. This ensures that every time I click "Run Simulation", Vivado automatically compiles and runs the C++ model to generate fresh expected results before launching the hardware simulation.
+
 ## Things I Learned & Design Choices
 *   **Datapath vs. Control Separation:** It was important to realize that all 32-bit arithmetic (including calculating the branch target `pc + imm`) should happen continuously in the Datapath. The Control Unit is only responsible for flipping flags (e.g., `branch`, `mem_write`).
 *   **Word-Aligned Memory Access:** While the RISC-V PC increments by 4 (byte-addressed), my memory arrays are word-indexed. I resolved this hardware constraint by ignoring the two least significant bits of the address (`addr[31:2]`), which effectively divides the address by 4.
 *   **Hardwired STORE Logic:** Following the RISC-V standard, data to be stored in RAM always comes from `rs2`. Therefore, I hardwired the `rd2` output directly to the RAM's `write_data` input. The RAM only accepts the data when the `mem_write` flag is high.
+*   **Dynamic Simulation:** By using `$readmemh` in SystemVerilog and Tcl hooks in Vivado, I decoupled the program code from the hardware synthesis. I can modify the `.hex` program and run a full verification cycle instantly without re-synthesizing the RTL.
