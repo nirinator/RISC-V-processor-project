@@ -14,7 +14,15 @@ module reg_file (
 );
 
 //here we create 32 registers of 32 bits, this is the fast memory's storage.
+//We reset them all to zeros
     logic [31:0] registers [31:0];
+    
+    integer i;
+    initial begin
+        for (i = 0; i < 32; i = i + 1) begin
+            registers[i] = 32'b0;
+        end
+    end
 
  //here we check whther both writing is enabled and the destination registewr is valid
  //if so, we copy the writing data into the register dictated by rd.

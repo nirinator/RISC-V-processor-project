@@ -10,7 +10,7 @@ module instr_mem (
 
 //memory now would contain the input file
     initial begin
-
+        $readmemh("program.hex", memory);
     end
 
 //begin from bit 2 and not 0, since the processor jumps every 4 bits 
