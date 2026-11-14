@@ -1,10 +1,12 @@
+//here we use enum to to convert all the commands and alu operations
+//into text, making it easier to use, instead of writing the numbers themselves.
+//we would use these two new types of libraries throughout the project by importing
+
 package riscv_pkg;
-  // RV32I Opcodes [6:0]
+  // a list of all the opcodes
   typedef enum logic [6:0] {
     OP_LUI    = 7'b0110111,
     OP_AUIPC  = 7'b0010111,
-    OP_JAL    = 7'b1101111,
-    OP_JALR   = 7'b1100111,
     OP_BRANCH = 7'b1100011,
     OP_LOAD   = 7'b0000011,
     OP_STORE  = 7'b0100011,
@@ -12,7 +14,7 @@ package riscv_pkg;
     OP_REG    = 7'b0110011
   } opcode_t;
 
-  // ALU Operations
+  // a list of all the alu operations
   typedef enum logic [3:0] {
     ALU_ADD  = 4'b0000,
     ALU_SUB  = 4'b1000,
