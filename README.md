@@ -31,7 +31,7 @@ Here is a quick look at the main modules I wrote:
 To prove the hardware works flawlessly, I built an automated verification environment mimicking industry practices:
 *   **C++ Golden Model:** I wrote a C++ simulator that reads the exact same machine code (`program.hex`) as the hardware. It executes the instructions in software and dumps the final state of the 32 registers into `expected_regs.hex`.
 *   **SystemVerilog Testbench:** The Vivado testbench runs the hardware simulation, reads the `expected_regs.hex` file, and automatically compares the hardware's final register states against the C++ model's predictions.
-*   **Tcl Automation:** I integrated a `run_model.tcl` script into Vivado's `xsim.compile.tcl.pre` hook. This ensures that every time I click "Run Simulation", Vivado automatically compiles and runs the C++ model to generate fresh expected results before launching the hardware simulation.
+*   **Tcl Automation:** I attached a tcl file that ensures that every time I click "Run Simulation", Vivado automatically compiles and runs the C++ model to generate fresh expected results before launching the hardware simulation.
 
 ## Things I Learned & Design Choices
 *   **Datapath vs. Control Separation:** It was important to realize that all 32-bit arithmetic (including calculating the branch target `pc + imm`) should happen continuously in the Datapath. The Control Unit is only responsible for flipping flags (e.g., `branch`, `mem_write`).
