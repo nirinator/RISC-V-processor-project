@@ -46,6 +46,7 @@ To run the simulation and see the automated verification process in action, foll
 **1. Clone the repository**
 Open your terminal or Git Bash and run:
 git clone https://github.com/nirinator/RISC-V-processor-project.git
+
 cd RISC-V-processor-project
 
 **2. Open the Project**
