@@ -31,7 +31,7 @@ module reg_file (
         if (!rst_n) begin
         
         end
-        if (we && rd != 5'b00000) begin
+        else if (we && rd != 5'b00000) begin
             registers[rd] <= wd;
         end
     end
