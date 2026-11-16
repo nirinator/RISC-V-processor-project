@@ -4,6 +4,7 @@
 
 module reg_file (
     input  logic        clk,
+    input  logic        rst_n,
     input  logic        we,    // Write Enable
     input  logic [4:0]  rs1,   // Source register 
     input  logic [4:0]  rs2,   // Source register 
@@ -27,6 +28,9 @@ module reg_file (
  //here we check whther both writing is enabled and the destination registewr is valid
  //if so, we copy the writing data into the register dictated by rd.
     always_ff @(posedge clk) begin
+        if (!rst_n) begin
+        
+        end
         if (we && rd != 5'b00000) begin
             registers[rd] <= wd;
         end
