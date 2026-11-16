@@ -44,7 +44,8 @@ To prove the hardware works flawlessly, I built an automated verification enviro
 To run the simulation and see the automated verification process in action, follow these steps:
 
 **1. Clone the repository**
-Open your terminal or Git Bash and run:
+Open your terminal or Git Bash and run these two lines:
+
 git clone https://github.com/nirinator/RISC-V-processor-project.git
 
 cd RISC-V-processor-project
